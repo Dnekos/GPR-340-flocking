@@ -15,7 +15,7 @@ Vector2 CohesionRule::computeForce(const std::vector<Boid*>& neighborhood, Boid*
 
         Vector2 distanceToBoid = (centerOfMass / neighborhood.size()) - boid->getPosition();
         //float distance = Vector2::getDistance((centerOfMass / neighborhood.size()), boid->getPosition());
-        cohesionForce = distanceToBoid.normalized();// *(distance * boid->getDetectionRadius());
+        cohesionForce = distanceToBoid / neighborhood.size();// *(distance * boid->getDetectionRadius());
     }
 
     return cohesionForce.normalized();
