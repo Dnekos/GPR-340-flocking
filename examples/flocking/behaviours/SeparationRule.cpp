@@ -21,11 +21,9 @@ Vector2 SeparationRule::computeForce(const std::vector<Boid*>& neighborhood, Boi
                 separatingForce += boid->getPosition() - neighbor->getPosition();
             }
         }
+        // clamping magnitude
         float magnitude = std::max(std::min(4.0f, 1 / (separatingForce.getMagnitude() / neighborhood.size())), 0.1f);
         separatingForce = Vector2::normalized(separatingForce) * magnitude;
-        //if (magnitude > 1 && separatingForce.x != 0)
-        //    std::cout << separatingForce.x << " " << separatingForce.y << " " << Vector2::normalized(separatingForce).x << " " << Vector2::normalized(separatingForce).y << std::endl;
-
     }
     separatingForce = Vector2::normalized(separatingForce);
 
